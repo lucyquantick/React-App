@@ -6,6 +6,11 @@ import Cockpit from '../Components/Cockpit/Cockpit';
 
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		console.log('[App.js] constructor');
+	}
+
 	state = {
 		persons: [
 			{ id: 'njrt', name: 'Lucy', age: 24 },
@@ -14,6 +19,16 @@ class App extends Component {
 		],
 		otherState: 'some other value',
 		showPersons: false
+	}
+
+	// rare use
+	static getDerivedStateFromProps(props, state) {
+		console.log('[App.js] getDerivedStateFromProps');
+		return state;
+	}
+
+	componentDidMount() {
+		console.log('[App.js] componentDidMount');
 	}
 
 	deletePersonHandler = (personIndex) => {
@@ -47,8 +62,9 @@ class App extends Component {
 		this.setState({ showPersons: !doesShow });
 	}
 
+	// render method returns jsx
 	render() {
-
+		console.log('[App.js] render');
 		let persons = null;
 
 		if (this.state.showPersons) {
