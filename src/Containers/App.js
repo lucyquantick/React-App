@@ -18,7 +18,8 @@ class App extends Component {
 			{ id: '9k8l', name: 'Queen', age: 100 }
 		],
 		otherState: 'some other value',
-		showPersons: false
+		showPersons: false,
+		showCockpit: true
 	}
 
 	// rare use
@@ -87,12 +88,13 @@ class App extends Component {
 
 		return (
 			<div className={classes.App}>
-
-				<Cockpit
+				<button onClick={() => { this.setState({ showCockpit: false })}}>Remove cockpit </button>
+				{this.state.showCockpit ? <Cockpit
 					title={this.props.appTitle}
 					showPersons={this.state.showPersons}
 					persons={this.state.persons}
-					clicked={this.togglePersonsHandler} />
+					clicked={this.togglePersonsHandler}
+				/> : null}
 
 				{persons}
 			</div>
